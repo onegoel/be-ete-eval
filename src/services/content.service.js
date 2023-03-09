@@ -1,4 +1,4 @@
-const { ContentType, Field } = require('../models');
+const { ContentType, Field, Collection } = require('../models');
 
 module.exports = {
     createContentTypeInDb: async (name, fields) => {
@@ -13,5 +13,10 @@ module.exports = {
             };
         });
         await Field.bulkCreate(newFields);
+        
+        await Collection.create({
+            name,
+            contentTypeId: newContentType.id,
+        });   
     }
 };

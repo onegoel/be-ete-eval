@@ -10,7 +10,7 @@ module.exports = {
             res.status(201).json({
                 data: {
                     statusCode: 201,
-                    message: 'Content type created successfully',
+                    message: 'Content type & empty collection created successfully',
                 }
             });
         } catch (error) {
