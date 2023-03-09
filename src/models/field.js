@@ -12,6 +12,10 @@ module.exports = (sequelize, DataTypes) => {
         dataType: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        contentTypeId: {
+            type: DataTypes.INTEGER,
+            allowNull: false
         }
     }, {});
   

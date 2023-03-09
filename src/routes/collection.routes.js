@@ -9,5 +9,4 @@ router.get('/', (req, res) => {
 router.post('/create', createCollection);
 router.get('/:id', getCollectionById);
 
-
 module.exports = router;

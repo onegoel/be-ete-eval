@@ -5,6 +5,7 @@
     "database": "be_ete_db",
     "host": "localhost",
     "dialect": "postgres",
-    "timestamps": false
+    "timestamps": false,
+    "logging": true
   }
 }

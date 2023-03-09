@@ -8,6 +8,14 @@ module.exports = (sequelize, DataTypes) => {
         value: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        fieldId: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        collectionId: {
+            type: DataTypes.INTEGER,
+            allowNull: false
         }
     }, {});
       
