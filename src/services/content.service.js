@@ -1,4 +1,6 @@
-const { ContentType, Field, Collection } = require('../models');
+const {
+    ContentType, Field, Collection 
+} = require('../models');
 const createHttpError = require('http-errors');
 
 module.exports = {
@@ -62,6 +64,19 @@ module.exports = {
             throw createHttpError(404, 'Field not found');
         }
         await field.destroy();
-    }
+    },
 
+    renameFieldInContentTypeInDb: async (id, fieldId, name) => {
+        const contentType = await ContentType.findByPk(id);
+        if (!contentType) {
+            throw createHttpError(404, 'Content type not found');
+        }
+        const field = await Field.findByPk(fieldId);
+        if (!field) {
+            throw createHttpError(404, 'Field not found');
+        }
+        await field.update({
+            name,
+        });
+    }
 };

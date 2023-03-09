@@ -46,6 +46,13 @@
         "object-curly-spacing": [
             "error",
             "always"
+        ],
+        "object-curly-newline": [
+            "error",
+            {
+                "ObjectExpression": "always",
+                "ObjectPattern": { "multiline": true, "minProperties": 3 }
+            }
         ]
     }
 }

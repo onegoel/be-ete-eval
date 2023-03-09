@@ -1,9 +1,11 @@
 const { errorHandler } = require('../utils/errorHandler.utils');
-const { createContentTypeInDb, 
+const {
+    createContentTypeInDb, 
     updateContentTypeNameInDb, 
     addFieldToContentTypeInDb, 
-    deleteFieldFromContentTypeInDb } 
-    = require('../services/content.service');
+    deleteFieldFromContentTypeInDb,
+    renameFieldInContentTypeInDb
+} = require('../services/content.service');
 
 module.exports = {
     createContentType: async (req, res) => {
@@ -64,6 +66,23 @@ module.exports = {
                 data: {
                     statusCode: 201,
                     message: 'Field deleted from content type successfully',
+                }
+            });
+        }
+        catch (error) {
+            errorHandler(error, res);
+        }
+    },
+
+    renameFieldInContentType: async (req, res) => {
+        try {
+            const { id, fieldId } = req.params;
+            const { name } = req.body;
+            await renameFieldInContentTypeInDb(id, fieldId, name);
+            res.status(201).json({
+                data: {
+                    statusCode: 201,
+                    message: 'Field name updated successfully',
                 }
             });
         }
