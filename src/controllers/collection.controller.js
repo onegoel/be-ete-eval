@@ -1,4 +1,4 @@
-const { createCollectionInDb } = require('../services/collection.service');
+const { createCollectionInDb, getCollectionByIdFromDb } = require('../services/collection.service');
 const { errorHandler } = require('../utils/errorHandler.utils');
 
 const createCollection = async (req, res) => {
@@ -19,7 +19,29 @@ const createCollection = async (req, res) => {
     }
 };
 
-module.exports = {
-    createCollection,
+const getCollectionById = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const collection = await getCollectionByIdFromDb(id);
+
+        res.status(200).json({
+            data: {
+                statusCode: 200,
+                message: 'Collection found',
+                collection
+            }
+        });
+    } catch (err) {
+        errorHandler(err, res);
+    }
 };
 
+
+
+
+module.exports = {
+    createCollection,
+    getCollectionById,
+};
+    
+  

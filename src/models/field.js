@@ -15,12 +15,12 @@ module.exports = (sequelize, DataTypes) => {
         }
     }, {});
   
-    Field.associate = (models) => {
-        Field.belongsTo(models.ContentType, {
-            foreignKey: 'contentTypeId',
-            onDelete: 'CASCADE'
-        });
-    };
+    // Field.associate = (models) => {
+    //     Field.belongsTo(models.ContentType, {
+    //         foreignKey: 'contentTypeId',
+    //         onDelete: 'CASCADE'
+    //     });
+    // };
   
     return Field;
 };

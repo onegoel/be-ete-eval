@@ -11,16 +11,16 @@ module.exports = (sequelize, DataTypes) => {
         }
     }, {});
 
-    ContentType.associate = (models) => {
-        ContentType.hasMany(models.Field, {
-            foreignKey: 'contentTypeId',
-            as: 'fields'
-        });
-        ContentType.hasMany(models.Collection, {
-            foreignKey: 'contentTypeId',
-            as: 'collections'
-        });
-    };
+    // ContentType.associate = (models) => {
+    //     ContentType.hasMany(models.Field, {
+    //         foreignKey: 'contentTypeId',
+    //         as: 'fields'
+    //     });
+    //     ContentType.hasMany(models.Collection, {
+    //         foreignKey: 'contentTypeId',
+    //         as: 'collections'
+    //     });
+    // };
 
     return ContentType;
 };

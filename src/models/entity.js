@@ -11,16 +11,16 @@ module.exports = (sequelize, DataTypes) => {
         }
     }, {});
       
-    Entity.associate = (models) => {
-        Entity.belongsTo(models.Collection, {
-            foreignKey: 'collectionId',
-            onDelete: 'CASCADE'
-        });
-        Entity.belongsTo(models.Field, {
-            foreignKey: 'fieldId',
-            onDelete: 'CASCADE'
-        });
-    };
+    // Entity.associate = (models) => {
+    //     Entity.belongsTo(models.Collection, {
+    //         foreignKey: 'collectionId',
+    //         onDelete: 'CASCADE'
+    //     });
+    //     Entity.belongsTo(models.Field, {
+    //         foreignKey: 'fieldId',
+    //         onDelete: 'CASCADE'
+    //     });
+    // };
       
     return Entity;
 };

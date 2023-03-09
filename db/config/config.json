@@ -4,6 +4,7 @@
     "password": "postgres328722",
     "database": "be_ete_db",
     "host": "localhost",
-    "dialect": "postgres"
+    "dialect": "postgres",
+    "timestamps": false
   }
 }
