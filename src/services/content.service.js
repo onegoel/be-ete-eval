@@ -1,9 +1,28 @@
 const {
-    ContentType, Field, Collection 
+    ContentType, Field, Entity 
 } = require('../models');
 const createHttpError = require('http-errors');
 
 module.exports = {
+
+    getAllContentTypesFromDb: async () => {
+        const contentTypes = await ContentType.findAll({
+            include: [
+                {
+                    model: Field,
+                    as: 'fields',
+                    attributes: ['id', 'name',],
+                }
+            ],
+            attributes: ['id', 'name'],
+        });
+        if(contentTypes === null || contentTypes === undefined)
+            throw createHttpError(404, 'Content types not found'); 
+        
+        
+        return contentTypes;
+    },
+
     createContentTypeInDb: async (name, fields) => {
         const newContentType = await ContentType.create({
             name,
@@ -15,15 +34,10 @@ module.exports = {
                 dataType: 'string',
             };
         });
-        await Field.bulkCreate(newFields);
-        
-        await Collection.create({
-            name,
-            contentTypeId: newContentType.id,
-        });   
+        await Field.bulkCreate(newFields);   
     },
 
-    updateContentTypeNameInDb: async (id, name) => {
+    renameContentTypeInDb: async (id, name) => {
         await ContentType.update({
             name,
         }, {
@@ -64,6 +78,11 @@ module.exports = {
             throw createHttpError(404, 'Field not found');
         }
         await field.destroy();
+        await Entity.destroy({
+            where: {
+                fieldId,
+            }
+        });
     },
 
     renameFieldInContentTypeInDb: async (id, fieldId, name) => {
@@ -78,5 +97,20 @@ module.exports = {
         await field.update({
             name,
         });
+    },
+
+    getFieldsOfContentTypeByIdFromDb: async (id) => {
+        const contentType = await ContentType.findByPk(id);
+        
+        if (!contentType) {
+            throw createHttpError(404, 'Content type not found');
+        }
+        const fields = await Field.findAll({
+            where: {
+                contentTypeId: id,
+            },
+            attributes: ['id', 'name'],
+        });
+        return fields;
     }
 };

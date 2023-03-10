@@ -1,13 +1,30 @@
 const { errorHandler } = require('../utils/errorHandler.utils');
 const {
+    getAllContentTypesFromDb,
     createContentTypeInDb, 
-    updateContentTypeNameInDb, 
+    renameContentTypeInDb, 
     addFieldToContentTypeInDb, 
     deleteFieldFromContentTypeInDb,
-    renameFieldInContentTypeInDb
+    renameFieldInContentTypeInDb,
+    getFieldsOfContentTypeByIdFromDb
 } = require('../services/content.service');
 
 module.exports = {
+    getAllContentTypes: async (req, res) => {
+        try {
+            const contentTypes = await getAllContentTypesFromDb();
+            res.status(200).json({
+                data: {
+                    statusCode: 200,
+                    message: 'Content types found',
+                    contentTypes
+                }
+            });
+        } catch (error) {
+            errorHandler(error, res);
+        }
+    },
+
     createContentType: async (req, res) => {
         try {
             const { name, fields } = req.body;
@@ -16,7 +33,7 @@ module.exports = {
             res.status(201).json({
                 data: {
                     statusCode: 201,
-                    message: 'Content type & empty collection created successfully',
+                    message: 'Content type created successfully',
                 }
             });
         } catch (error) {
@@ -24,11 +41,11 @@ module.exports = {
         }
     },
 
-    updateContentTypeNameById: async (req, res) => {
+    renameContentTypeById: async (req, res) => {
         try {
             const { id } = req.params;
             const { name } = req.body;
-            await updateContentTypeNameInDb(id, name);
+            await renameContentTypeInDb(id, name);
             res.status(201).json({
                 data: {
                     statusCode: 201,
@@ -87,6 +104,22 @@ module.exports = {
             });
         }
         catch (error) {
+            errorHandler(error, res);
+        }
+    },
+
+    getFieldsOfContentTypeById: async (req, res) => {
+        try {
+            const { id } = req.params;
+            const fields = await getFieldsOfContentTypeByIdFromDb(id);
+            res.status(200).json({
+                data: {
+                    statusCode: 200,
+                    message: 'Fields found',
+                    fields
+                }
+            });
+        } catch (error) {
             errorHandler(error, res);
         }
     }

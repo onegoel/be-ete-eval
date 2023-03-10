@@ -9,18 +9,19 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
-        contentTypeId: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        }
-    }, {});
+        // contentTypeId: {
+        //     type: DataTypes.INTEGER,
+        //     allowNull: false
+        // }
+    }, {
+    });
       
-    // Collection.associate = (models) => {
-    //     Collection.belongsTo(models.ContentType, {
-    //         foreignKey: 'contentTypeId',
-    //         onDelete: 'CASCADE'
-    //     });
-    // };
+    Collection.associate = (models) => {
+        Collection.belongsTo(models.ContentType, {
+            foreignKey: 'contentTypeId',
+            onDelete: 'CASCADE'
+        });
+    };
       
     return Collection;
 };

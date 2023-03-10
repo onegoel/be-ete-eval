@@ -9,18 +9,23 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         }
-    }, {});
+    }, {
+    });
 
-    // ContentType.associate = (models) => {
-    //     ContentType.hasMany(models.Field, {
-    //         foreignKey: 'contentTypeId',
-    //         as: 'fields'
-    //     });
-    //     ContentType.hasMany(models.Collection, {
-    //         foreignKey: 'contentTypeId',
-    //         as: 'collections'
-    //     });
-    // };
+    ContentType.associate = (models) => {
+        
+        ContentType.hasMany(models.Field, {
+            foreignKey: 'contentTypeId',
+            as: 'fields'
+        });
+    
+
+        ContentType.hasMany(models.Collection, {
+            foreignKey: 'contentTypeId',
+            as: 'collections'
+        });
+    
+    };
 
     return ContentType;
 };

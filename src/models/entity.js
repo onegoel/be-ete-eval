@@ -9,26 +9,27 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
-        fieldId: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        collectionId: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        }
-    }, {});
+        // fieldId: {
+        //     type: DataTypes.INTEGER,
+        //     allowNull: false
+        // },
+        // collectionId: {
+        //     type: DataTypes.INTEGER,
+        //     allowNull: false
+        // }
+    }, {
+    });
       
-    // Entity.associate = (models) => {
-    //     Entity.belongsTo(models.Collection, {
-    //         foreignKey: 'collectionId',
-    //         onDelete: 'CASCADE'
-    //     });
-    //     Entity.belongsTo(models.Field, {
-    //         foreignKey: 'fieldId',
-    //         onDelete: 'CASCADE'
-    //     });
-    // };
+    Entity.associate = (models) => {
+        Entity.belongsTo(models.Collection, {
+            foreignKey: 'collectionId',
+            onDelete: 'CASCADE'
+        });
+        Entity.belongsTo(models.Field, {
+            foreignKey: 'fieldId',
+            onDelete: 'CASCADE'
+        });
+    };
       
     return Entity;
 };
