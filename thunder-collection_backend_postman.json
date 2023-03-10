@@ -1,0 +1,386 @@
+{
+    "info": {
+        "name": "backend",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": ""
+    },
+    "item": [
+        {
+            "name": "GET / all collections",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "http://localhost:8000/api/collection",
+                    "path": [
+                        "api",
+                        "collection"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8000"
+                }
+            }
+        },
+        {
+            "name": "POST / create content type",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "http://localhost:8000/api/content/create",
+                    "path": [
+                        "api",
+                        "content",
+                        "create"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8000"
+                },
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\n  \"name\": \"Company\"\n}"
+                }
+            }
+        },
+        {
+            "name": "POST / create collection",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "http://localhost:8000/api/collection/create/11",
+                    "path": [
+                        "api",
+                        "collection",
+                        "create",
+                        "11"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8000"
+                },
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\n  \"data\": [{\n    \"id\": 26,\n    \"value\": \"Messi\"\n  }, {\n    \"id\": 27,\n    \"value\": \"34\"\n  }, {\n    \"id\": 28,\n    \"value\": \"M\"\n  }]\n}"
+                }
+            }
+        },
+        {
+            "name": "GET / collection by id",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "http://localhost:8000/api/collection/12",
+                    "path": [
+                        "api",
+                        "collection",
+                        "12"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8000"
+                }
+            }
+        },
+        {
+            "name": "PATCH / update content type",
+            "request": {
+                "method": "PATCH",
+                "url": {
+                    "raw": "http://localhost:8000/api/content/update/9",
+                    "path": [
+                        "api",
+                        "content",
+                        "update",
+                        "9"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8000"
+                },
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\n  \"name\": \"Footballer\"\n}"
+                }
+            }
+        },
+        {
+            "name": "POST / add field to content type by id",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "http://localhost:8000/api/content/11/field",
+                    "path": [
+                        "api",
+                        "content",
+                        "11",
+                        "field"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8000"
+                },
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\n  \"name\": \"Residence\"\n}"
+                }
+            }
+        },
+        {
+            "name": "DELETE / delete field from a content type",
+            "request": {
+                "method": "DELETE",
+                "url": {
+                    "raw": "http://localhost:8000/api/content/9/field/25",
+                    "path": [
+                        "api",
+                        "content",
+                        "9",
+                        "field",
+                        "25"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8000"
+                }
+            }
+        },
+        {
+            "name": "PATCH / update field name in content type",
+            "request": {
+                "method": "PATCH",
+                "url": {
+                    "raw": "http://localhost:8000/api/content/9/field/14",
+                    "path": [
+                        "api",
+                        "content",
+                        "9",
+                        "field",
+                        "14"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8000"
+                },
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\n  \"name\": \"Nation\"\n}"
+                }
+            }
+        },
+        {
+            "name": "DELETE / collection by id",
+            "request": {
+                "method": "DELETE",
+                "url": {
+                    "raw": "http://localhost:8000/api/collection/12",
+                    "path": [
+                        "api",
+                        "collection",
+                        "12"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8000"
+                }
+            }
+        },
+        {
+            "name": "PATCH / rename collection",
+            "request": {
+                "method": "PATCH",
+                "url": {
+                    "raw": "http://localhost:8000/api/collection/name/1",
+                    "path": [
+                        "api",
+                        "collection",
+                        "name",
+                        "1"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8000"
+                },
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\n  \"name\": \"Footballer\"\n}"
+                }
+            }
+        },
+        {
+            "name": "PATCH / change field value for a collection",
+            "request": {
+                "method": "PATCH",
+                "url": {
+                    "raw": "http://localhost:8000/api/collection/1/field/13",
+                    "path": [
+                        "api",
+                        "collection",
+                        "1",
+                        "field",
+                        "13"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8000"
+                },
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\n  \"value\": \"Pereira\"\n}"
+                }
+            }
+        },
+        {
+            "name": "GET / collection by content type id",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "http://localhost:8000/api/collection/content-type/11",
+                    "path": [
+                        "api",
+                        "collection",
+                        "content-type",
+                        "11"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8000"
+                }
+            }
+        },
+        {
+            "name": "GET / all content types",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "http://localhost:8000/api/content",
+                    "path": [
+                        "api",
+                        "content"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8000"
+                },
+                "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                        {
+                            "key": "token",
+                            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFyeWFuQGdvZWwuY29tIiwiaWF0IjoxNjc4NDcxMzM3LCJleHAiOjE2Nzg0NzQ5Mzd9.urY8Do0b8GR-UXnRGyRcnum0LvahWpzmL8eJEz7gS1M",
+                            "type": "string"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "name": "GET / fields of a content type",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "http://localhost:8000/api/content/13/field",
+                    "path": [
+                        "api",
+                        "content",
+                        "13",
+                        "field"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8000"
+                }
+            }
+        },
+        {
+            "name": "PATCH / update multiple fields of collection",
+            "request": {
+                "method": "PATCH",
+                "url": {
+                    "raw": "http://localhost:8000/api/collection/13",
+                    "path": [
+                        "api",
+                        "collection",
+                        "13"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8000"
+                },
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\n  \"data\": {\n    \"id\": 26,\n    \"value\": \"Messi\"\n  }\n}"
+                }
+            }
+        }
+    ]
+}
