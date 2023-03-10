@@ -204,6 +204,39 @@ module.exports = {
         }
         entity.value = value;
         await entity.save();
-    }
+    },
 
+    updateCollectionFieldValuesInDb: async (id, data) => {
+        const collection = await Collection.findByPk(id);
+        if (!collection) {
+            throw createHttpError(404, 'Collection not found');
+        }
+
+        console.log(collection.contentTypeId);
+        const validFields = await Field.findAll({
+            where: {
+                contentTypeId: collection.contentTypeId
+            },
+            attributes: ['id', 'name']
+        });
+        // console.log(validFields[0].dataValues.id);
+        const validFieldsIds = validFields.map((field) => field.dataValues.id);
+        // console.log(validFieldsIds);
+        // console.log(data);
+        if(!data.every((item) => validFieldsIds.includes(item.id))) {
+            throw createHttpError(400, 'Invalid field id');
+        }
+        await Entity.destroy({
+            where: {
+                collectionId: id
+            }
+        });
+        await Entity.bulkCreate(data.map((item) => {
+            return {
+                collectionId: id,
+                fieldId: item.id,
+                value: item.value,
+            };
+        }));
+    }
 };

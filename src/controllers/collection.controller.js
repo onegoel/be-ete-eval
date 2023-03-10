@@ -1,5 +1,12 @@
 const {
-    getAllCollectionsFromDb, createCollectionInDb, getCollectionByIdFromDb, deleteCollectionByIdInDb, renameCollectionByIdInDb, updateFieldValueInCollectionInDb, getCollectionByContentTypeIdFromDb
+    getAllCollectionsFromDb, 
+    createCollectionInDb, 
+    getCollectionByIdFromDb, 
+    deleteCollectionByIdInDb, 
+    renameCollectionByIdInDb, 
+    updateFieldValueInCollectionInDb, 
+    getCollectionByContentTypeIdFromDb,
+    updateCollectionFieldValuesInDb
 } = require('../services/collection.service');
 const { errorHandler } = require('../utils/errorHandler.utils');
 
@@ -122,7 +129,26 @@ module.exports = {
         } catch (err) {
             errorHandler(err, res);
         }
+    },
+
+    updateCollectionFieldValues: async (req, res) => {
+        try {
+            const { id } = req.params;
+            const { data } = req.body;
+
+            await updateCollectionFieldValuesInDb(id, data);
+
+            res.status(200).json({
+                data: {
+                    statusCode: 200,
+                    message: 'Field values updated successfully'
+                }
+            });
+        } catch (err) {
+            errorHandler(err, res);
+        }
     }
+
 };
 
   

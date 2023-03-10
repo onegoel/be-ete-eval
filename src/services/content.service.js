@@ -112,5 +112,6 @@ module.exports = {
             attributes: ['id', 'name'],
         });
         return fields;
-    }
+    },
+
 };

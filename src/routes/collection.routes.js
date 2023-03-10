@@ -1,7 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const {
-    getAllCollections, createCollection, getCollectionById, deleteCollectionById, renameCollectionById, updateFieldValueInCollection, getCollectionByContentTypeId
+    getAllCollections, 
+    createCollection, 
+    getCollectionById, 
+    deleteCollectionById, 
+    renameCollectionById, 
+    updateFieldValueInCollection, 
+    getCollectionByContentTypeId, 
+    updateCollectionFieldValues
 } = require('../controllers/collection.controller');
 
 router.get('/', getAllCollections);
@@ -11,6 +18,6 @@ router.get('/content-type/:id', getCollectionByContentTypeId); // get collection
 router.delete('/:id', deleteCollectionById); // delete collection for a given content type
 router.patch('/name/:id', renameCollectionById); // update collection name
 router.patch('/:id/field/:fieldId', updateFieldValueInCollection); // update field value
-
+router.patch('/:id', updateCollectionFieldValues);
 
 module.exports = router;
