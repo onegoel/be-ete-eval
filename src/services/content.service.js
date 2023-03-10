@@ -23,18 +23,20 @@ module.exports = {
         return contentTypes;
     },
 
-    createContentTypeInDb: async (name, fields) => {
+    createContentTypeInDb: async (name, fields = null) => {
         const newContentType = await ContentType.create({
             name,
         });
-        const newFields = fields.map((field) => {
-            return {
-                name: field,
-                contentTypeId: newContentType.id,
-                dataType: 'string',
-            };
-        });
-        await Field.bulkCreate(newFields);   
+        if (fields !== null) {
+            const newFields = fields.map((field) => {
+                return {
+                    name: field,
+                    contentTypeId: newContentType.id,
+                    dataType: 'string',
+                };
+            });
+            await Field.bulkCreate(newFields);   
+        }
     },
 
     renameContentTypeInDb: async (id, name) => {

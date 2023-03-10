@@ -12,7 +12,6 @@ COPY package-lock.json src/package-lock.json
 
 WORKDIR /src
 
-
 RUN npm install sequelize dotenv
 
 ENTRYPOINT [ "npm", "run", "db:seedup" ] 

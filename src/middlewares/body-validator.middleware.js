@@ -10,7 +10,9 @@ module.exports = {
         return (req, res, next) => {
             const { error: joiError } = schema.validate(req[reqProperties[reqProperty]]);
             if (joiError) {
-                return res.status(422).json({ message: joiError.details[0].message });
+                return res.status(422).json({
+                    message: joiError.details[0].message 
+                });
             }
             next();
         };
