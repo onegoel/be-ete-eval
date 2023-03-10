@@ -24,6 +24,14 @@ module.exports = {
     },
 
     createContentTypeInDb: async (name, fields = null) => {
+        const contentType = await ContentType.findOne({
+            where: {
+                name,
+            }
+        });
+        if (contentType !== null) {
+            throw createHttpError(400, 'Content type already exists');
+        }
         const newContentType = await ContentType.create({
             name,
         });
